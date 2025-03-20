@@ -1,40 +1,58 @@
-using API.Dtos;
-using AutoMapper;
-using Core.Entities;
-using Core.Interfaces;
+using API.Errors;
+using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    public class BasketController: BaseApiController
+    public class BuggyController : BaseApiController
     {
-        private readonly IBasketRepository _basketRepository;
-        private readonly IMapper _mapper;
-        public BasketController(IBasketRepository basketRepository, IMapper mapper)
+        private readonly StoreContext _context;
+        public BuggyController(StoreContext context)
         {
-            _basketRepository = basketRepository;
-            _mapper = mapper;
+            _context = context;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<CustomerBasket>> GetBasketById(string id)
+        [HttpGet("testauth")]
+        [Authorize]
+        public ActionResult<string> GetSecretText()
         {
-            var basket = await _basketRepository.GetBasketAsync(id);
-            return Ok(basket ?? new CustomerBasket(id));
+            return "secret stuff";
         }
 
-        [HttpPost]
-        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDto basket)
+        [HttpGet("notfound")]
+        public ActionResult GetNotFoundRequest()
         {
-            var customerBasket = _mapper.Map<CustomerBasketDto, CustomerBasket>(basket);
-            var updatedBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
-            return Ok(updatedBasket);
+            var thing = _context.Products.Find(42);
+
+            if (thing == null) 
+            {
+                return NotFound(new ApiResponse(404));
+            }
+
+            return Ok();
         }
 
-        [HttpDelete]
-        public async Task DeleteBasket(string id)
+        [HttpGet("servererror")]
+        public ActionResult GetServerError()
         {
-            await _basketRepository.DeleteBasketAsync(id);
+            var thing = _context.Products.Find(42);
+
+            var thingToReturn = thing.ToString();
+
+            return Ok();
+        }
+
+        [HttpGet("badrequest")]
+        public ActionResult GetBadRequest()
+        {
+            return BadRequest(new ApiResponse(400));
+        }
+
+        [HttpGet("badrequest/{id}")]
+        public ActionResult GetNotFoundRequest(int id)
+        {
+            return Ok();
         }
     }
 }
