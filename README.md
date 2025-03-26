@@ -1,5 +1,5 @@
 🛠️ Tecnologias Utilizadas
-*Backend
+🛠️ Backend
 
 .NET 8 – Framework robusto para desenvolvimento de APIs eficientes.
 
@@ -15,7 +15,7 @@ Domain-Driven Design (DDD) – Arquitetura focada em domínio para melhor organi
 
 
 
-*Frontend
+🛠️ Frontend
 
 Angular – Framework para construção de interfaces dinâmicas e responsivas.
 
@@ -24,46 +24,6 @@ TypeScript – Superset tipado do JavaScript para maior segurança no desenvolvi
 JavaScript – Linguagem base para interatividade e lógica no frontend.
 
 
-
-⚙️ Configuração do Ambiente
-Pré-requisitos
-.NET 8 SDK
-
-SQL Server (ou Docker com imagem do SQL Server)
-
-Node.js (v18+)
-
-Redis (ou Docker com imagem do Redis)
-
-Angular CLI
-
-Executando o Projeto
-Backend (.NET)
-
-sh
-Copy
-cd src/Backend
-dotnet restore
-dotnet run
-Configure a connection string no appsettings.json.
-
-Execute as migrations do EF Core:
-
-sh
-Copy
-dotnet ef database update
-Frontend (Angular)
-
-sh
-Copy
-cd src/Frontend
-npm install
-ng serve
-Acesse http://localhost:4200 no navegador.
-
-Redis (Cache)
-
-Certifique-se de que o Redis está rodando (padrão: localhost:6379).
 
 
 🔧 Padrões e Boas Práticas
