@@ -1,5 +1,5 @@
 🛠️ Tecnologias Utilizadas
-Backend
+*Backend
 
 .NET 8 – Framework robusto para desenvolvimento de APIs eficientes.
 
@@ -13,13 +13,17 @@ AutoMapper – Mapeamento automático entre objetos para simplificar transforma�
 
 Domain-Driven Design (DDD) – Arquitetura focada em domínio para melhor organização e clareza do código.
 
-Frontend
+
+
+*Frontend
 
 Angular – Framework para construção de interfaces dinâmicas e responsivas.
 
 TypeScript – Superset tipado do JavaScript para maior segurança no desenvolvimento.
 
 JavaScript – Linguagem base para interatividade e lógica no frontend.
+
+
 
 ⚙️ Configuração do Ambiente
 Pré-requisitos
