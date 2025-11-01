@@ -29,7 +29,7 @@ JavaScript – Linguagem base para interatividade e lógica no frontend.
 🔧 Padrões e Boas Práticas
 DDD (Domain-Driven Design) – Separação clara entre domínio, aplicação e infraestrutura.
 
-CQRS (opcional) – Segregação de leitura e escrita quando aplicável.
+CQRS – Segregação de leitura e escrita quando aplicável.
 
 Repository Pattern – Abstraction de acesso a dados.
 
